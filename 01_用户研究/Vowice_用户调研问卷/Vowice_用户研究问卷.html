@@ -1,0 +1,1211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Vowice 声音陪伴产品用户研究问卷，预计用时 5–8 分钟。">
+  <title>声契 Vowice｜关于声音与陪伴的 6 分钟问卷</title>
+  <style>
+    :root {
+      --ink: #202124;
+      --muted: #6d7075;
+      --faint: #9a9da2;
+      --line: #dedfe2;
+      --line-strong: #c6c8cc;
+      --paper: #ffffff;
+      --soft: #f7f7f6;
+      --rose: #c84652;
+      --rose-dark: #a93340;
+      --rose-soft: #fff5f5;
+      --teal: #3f7777;
+      --teal-soft: #f1f7f6;
+      --danger: #ad2737;
+      --focus: #1769aa;
+      --content: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+      letter-spacing: 0;
+    }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    label,
+    input[type="checkbox"],
+    input[type="radio"] {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--focus) 28%, transparent);
+      outline-offset: 2px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      width: min(var(--content), calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--rose);
+    }
+
+    .brand-mark span {
+      width: 2px;
+      border-radius: 1px;
+      background: currentColor;
+    }
+
+    .brand-mark span:nth-child(1),
+    .brand-mark span:nth-child(7) { height: 10px; }
+    .brand-mark span:nth-child(2),
+    .brand-mark span:nth-child(6) { height: 20px; }
+    .brand-mark span:nth-child(3),
+    .brand-mark span:nth-child(5) { height: 28px; }
+    .brand-mark span:nth-child(4) { height: 18px; }
+
+    .brand-name {
+      font-family: Georgia, "Songti SC", "STSong", serif;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .mode-badge {
+      padding: 4px 9px;
+      border: 1px solid #d5b06a;
+      border-radius: 4px;
+      color: #74551b;
+      background: #fff9ec;
+      font-size: 0.78rem;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    main {
+      width: min(var(--content), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 54px 0 34px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--rose);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 14px;
+      font-size: 2.25rem;
+      line-height: 1.25;
+      font-weight: 720;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .research-note {
+      max-width: 760px;
+      margin: 0 0 28px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--teal);
+      background: var(--teal-soft);
+      color: #365556;
+    }
+
+    .research-note strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #254546;
+    }
+
+    .consent-list {
+      max-width: 760px;
+      display: grid;
+      gap: 10px;
+      margin: 0 0 26px;
+    }
+
+    .consent-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .consent-item input {
+      width: 19px;
+      height: 19px;
+      margin: 3px 0 0;
+      accent-color: var(--rose);
+      flex: 0 0 auto;
+    }
+
+    .privacy-line {
+      max-width: 760px;
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .progress-region {
+      margin-bottom: 32px;
+    }
+
+    .progress-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 9px;
+    }
+
+    .progress-count {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .progress-count strong {
+      color: var(--rose);
+      font-size: 1.65rem;
+      font-weight: 650;
+    }
+
+    .progress-label {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      overflow: hidden;
+      border-radius: 3px;
+      background: #e7e7e8;
+    }
+
+    .progress-bar {
+      width: 25%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--rose);
+      transition: width 180ms ease;
+    }
+
+    .step-heading {
+      margin-bottom: 6px;
+      font-size: 1.7rem;
+      line-height: 1.35;
+    }
+
+    .step-intro {
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+
+    .question {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .question:first-of-type {
+      border-top: 0;
+    }
+
+    .question-title {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.08rem;
+      font-weight: 680;
+      line-height: 1.5;
+    }
+
+    .question-hint {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .required-mark {
+      color: var(--rose);
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .options.single-column {
+      grid-template-columns: 1fr;
+    }
+
+    .option {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--paper);
+      color: var(--ink);
+      transition: border-color 120ms ease, background 120ms ease;
+    }
+
+    .option:hover {
+      border-color: var(--line-strong);
+      background: var(--soft);
+    }
+
+    .option:has(input:checked) {
+      border-color: var(--rose);
+      background: var(--rose-soft);
+    }
+
+    .option input {
+      width: 19px;
+      height: 19px;
+      margin: 0;
+      flex: 0 0 auto;
+      accent-color: var(--rose);
+    }
+
+    .scale {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .scale .option {
+      min-height: 64px;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px 4px;
+      text-align: center;
+    }
+
+    .scale-number {
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+
+    .scale-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    textarea {
+      min-height: 118px;
+      padding: 13px 14px;
+      resize: vertical;
+    }
+
+    input[type="text"] {
+      min-height: 48px;
+      padding: 10px 12px;
+    }
+
+    .character-count {
+      margin-top: 6px;
+      color: var(--faint);
+      font-size: 0.78rem;
+      text-align: right;
+    }
+
+    .question.is-invalid {
+      margin-inline: -12px;
+      padding-inline: 12px;
+      background: linear-gradient(90deg, var(--rose-soft), transparent 70%);
+    }
+
+    .error-text {
+      display: none;
+      margin: 10px 0 0;
+      color: var(--danger);
+      font-size: 0.86rem;
+      font-weight: 620;
+    }
+
+    .question.is-invalid .error-text {
+      display: block;
+    }
+
+    .form-actions {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .button {
+      min-height: 48px;
+      min-width: 138px;
+      padding: 11px 22px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-weight: 680;
+      text-align: center;
+    }
+
+    .button-primary {
+      color: #fff;
+      background: var(--rose);
+    }
+
+    .button-primary:hover {
+      background: var(--rose-dark);
+    }
+
+    .button-secondary {
+      color: var(--teal);
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .button-secondary:hover {
+      background: var(--teal-soft);
+    }
+
+    .button:disabled {
+      cursor: wait;
+      opacity: 0.64;
+    }
+
+    .global-message {
+      min-height: 28px;
+      margin: 14px 0 0;
+      color: var(--danger);
+      font-size: 0.9rem;
+    }
+
+    .success {
+      max-width: 720px;
+      padding-top: 40px;
+    }
+
+    .success-mark {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--teal);
+      font-size: 1.65rem;
+      font-weight: 800;
+    }
+
+    .success h2 {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    .success p {
+      color: var(--muted);
+    }
+
+    .admin-panel {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .admin-panel h3 {
+      margin-bottom: 8px;
+    }
+
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .admin-actions .button {
+      min-width: 0;
+      color: var(--teal);
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    footer {
+      width: min(var(--content), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 26px;
+      color: var(--faint);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .header-inner,
+      main,
+      footer {
+        width: min(100% - 28px, var(--content));
+      }
+
+      .header-inner {
+        min-height: 70px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 32px;
+      }
+
+      .brand-name {
+        font-size: 1.26rem;
+      }
+
+      .mode-badge {
+        max-width: 118px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      main {
+        padding-top: 36px;
+      }
+
+      h1 {
+        font-size: 1.72rem;
+      }
+
+      .lead {
+        font-size: 0.98rem;
+      }
+
+      .step-heading {
+        font-size: 1.38rem;
+      }
+
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      .scale {
+        grid-template-columns: repeat(5, minmax(48px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .question {
+        padding: 24px 0;
+      }
+
+      .form-actions {
+        position: sticky;
+        bottom: 0;
+        z-index: 5;
+        min-height: 76px;
+        padding: 12px 0;
+        background: color-mix(in srgb, var(--paper) 96%, transparent);
+        backdrop-filter: blur(8px);
+      }
+
+      .button {
+        min-width: 112px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="声契 Vowice 问卷首页">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </span>
+        <span class="brand-name">声契 Vowice</span>
+      </a>
+      <span class="mode-badge" id="modeBadge" hidden>本地演示模式</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="introScreen" aria-labelledby="surveyTitle">
+      <p class="eyebrow">VOWICE PRODUCT RESEARCH</p>
+      <h1 id="surveyTitle">关于声音与陪伴的 6 分钟问卷</h1>
+      <p class="lead">你的真实感受会帮助我们判断什么值得做。没有正确答案，也不需要使用过 AI 陪伴产品。</p>
+
+      <div class="research-note">
+        <strong>这次研究关注什么</strong>
+        我们想了解人们对语音陪伴、声音定制、主动联系和长期记忆的真实边界。预计用时 5–8 分钟。
+      </div>
+
+      <div class="consent-list" aria-describedby="consentHelp">
+        <label class="consent-item">
+          <input type="checkbox" id="consentConfirmed">
+          <span>我已年满 18 周岁，并自愿参加本次匿名产品研究；我理解回答将用于 Vowice 的产品分析与作品集中的匿名总结。</span>
+        </label>
+      </div>
+      <p class="privacy-line" id="consentHelp">本问卷不收集姓名或联系方式。你可以随时关闭页面退出；未提交的内容不会上传。</p>
+      <button class="button button-primary" type="button" id="startButton">开始填写</button>
+      <p class="global-message" id="introMessage" role="alert" aria-live="polite"></p>
+    </section>
+
+    <form id="surveyForm" novalidate hidden>
+      <div class="progress-region" aria-label="问卷进度">
+        <div class="progress-meta">
+          <span class="progress-count"><strong id="stepNumber">1</strong> / 4</span>
+          <span class="progress-label" id="stepLabel">使用习惯</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <section class="survey-step" data-step="0" aria-labelledby="step0Title">
+        <h2 class="step-heading" id="step0Title">先从你真实的使用习惯开始</h2>
+        <p class="step-intro">请选择最接近实际情况的答案。</p>
+
+        <fieldset class="question" data-required="true">
+          <legend class="question-title">1. 过去 3 个月，你使用 AI 对话或陪伴产品的频率是？ <span class="required-mark">*</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="ai_companion_usage" value="frequent"><span>经常使用</span></label>
+            <label class="option"><input type="radio" name="ai_companion_usage" value="occasional"><span>偶尔使用</span></label>
+            <label class="option"><input type="radio" name="ai_companion_usage" value="tried_once_or_twice"><span>只试过一两次</span></label>
+            <label class="option"><input type="radio" name="ai_companion_usage" value="never"><span>从未使用</span></label>
+          </div>
+          <p class="error-text">请选择一个答案。</p>
+        </fieldset>
+
+        <fieldset class="question" data-required="true" data-max="3">
+          <legend class="question-title">2. 哪些时刻，你会更想获得陪伴或找人说说话？ <span class="required-mark">*</span></legend>
+          <p class="question-hint">最多选择 3 项</p>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="companion_scenarios" value="before_sleep"><span>睡前</span></label>
+            <label class="option"><input type="checkbox" name="companion_scenarios" value="commute_or_alone"><span>通勤或独处时</span></label>
+            <label class="option"><input type="checkbox" name="companion_scenarios" value="stressed_or_low"><span>压力大或情绪低落时</span></label>
+            <label class="option"><input type="checkbox" name="companion_scenarios" value="share_daily_life"><span>想分享日常时</span></label>
+            <label class="option"><input type="checkbox" name="companion_scenarios" value="relax_or_bored"><span>无聊、想放松时</span></label>
+            <label class="option"><input type="checkbox" name="companion_scenarios" value="none" data-exclusive="true"><span>暂时没有这样的时刻</span></label>
+          </div>
+          <p class="error-text">请选择 1–3 项。</p>
+        </fieldset>
+
+        <fieldset class="question" data-required="true">
+          <legend class="question-title">3. 如果和 AI 陪伴者交流，你更偏好哪种形式？ <span class="required-mark">*</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="preferred_interaction" value="text"><span>文字聊天</span></label>
+            <label class="option"><input type="radio" name="preferred_interaction" value="voice_messages"><span>一来一回的语音消息</span></label>
+            <label class="option"><input type="radio" name="preferred_interaction" value="continuous_call"><span>像通话一样连续交流</span></label>
+            <label class="option"><input type="radio" name="preferred_interaction" value="depends"><span>看场景决定</span></label>
+          </div>
+          <p class="error-text">请选择一个答案。</p>
+        </fieldset>
+      </section>
+
+      <section class="survey-step" data-step="1" aria-labelledby="step1Title" hidden>
+        <h2 class="step-heading" id="step1Title">关于声音与互动方式</h2>
+        <p class="step-intro">想象一位由你设置、能长期陪伴你的 AI。</p>
+
+        <fieldset class="question" data-required="true">
+          <legend class="question-title">4. 你对“自己调整 AI 陪伴者的声音”有多大兴趣？ <span class="required-mark">*</span></legend>
+          <div class="scale" aria-label="兴趣程度从 1 到 5">
+            <label class="option"><input type="radio" name="voice_customization_interest" value="1"><span class="scale-number">1</span><span class="scale-label">完全没有</span></label>
+            <label class="option"><input type="radio" name="voice_customization_interest" value="2"><span class="scale-number">2</span><span class="scale-label">较低</span></label>
+            <label class="option"><input type="radio" name="voice_customization_interest" value="3"><span class="scale-number">3</span><span class="scale-label">一般</span></label>
+            <label class="option"><input type="radio" name="voice_customization_interest" value="4"><span class="scale-number">4</span><span class="scale-label">较高</span></label>
+            <label class="option"><input type="radio" name="voice_customization_interest" value="5"><span class="scale-number">5</span><span class="scale-label">非常有</span></label>
+          </div>
+          <p class="error-text">请选择一个分值。</p>
+        </fieldset>
+
+        <fieldset class="question" data-required="true" data-max="3">
+          <legend class="question-title">5. 如果可以调整声音，你最想改变哪些特质？ <span class="required-mark">*</span></legend>
+          <p class="question-hint">最多选择 3 项</p>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="voice_traits" value="warmth"><span>声音气质（温柔或清冷）</span></label>
+            <label class="option"><input type="checkbox" name="voice_traits" value="pace"><span>语速</span></label>
+            <label class="option"><input type="checkbox" name="voice_traits" value="emotion"><span>情绪表达</span></label>
+            <label class="option"><input type="checkbox" name="voice_traits" value="distance"><span>亲近或克制的距离感</span></label>
+            <label class="option"><input type="checkbox" name="voice_traits" value="accent"><span>口音</span></label>
+            <label class="option"><input type="checkbox" name="voice_traits" value="brightness_depth"><span>明亮或低沉</span></label>
+            <label class="option"><input type="checkbox" name="voice_traits" value="no_adjustment" data-exclusive="true"><span>我不想调整声音</span></label>
+          </div>
+          <p class="error-text">请选择 1–3 项。</p>
+        </fieldset>
+
+        <fieldset class="question" data-required="true" data-max="2">
+          <legend class="question-title">6. 以下体验中，哪两项最吸引你？ <span class="required-mark">*</span></legend>
+          <p class="question-hint">最多选择 2 项</p>
+          <div class="options single-column">
+            <label class="option"><input type="checkbox" name="preferred_experiences" value="voice_workshop"><span>初声：调节他的声音，直到更接近你想象中的他</span></label>
+            <label class="option"><input type="checkbox" name="preferred_experiences" value="situational_call"><span>情境通话：睡前、通勤、雨夜等不同陪伴模式</span></label>
+            <label class="option"><input type="checkbox" name="preferred_experiences" value="shared_memory"><span>共同记忆：由你确认值得被记住的事</span></label>
+            <label class="option"><input type="checkbox" name="preferred_experiences" value="proactive_voice"><span>主动语音：在允许的时间留下早安、晚安或事件跟进</span></label>
+            <label class="option"><input type="checkbox" name="preferred_experiences" value="relationship_boundaries"><span>关系共识：设置称呼、沟通方式、边界和禁忌话题</span></label>
+            <label class="option"><input type="checkbox" name="preferred_experiences" value="none" data-exclusive="true"><span>目前都不太吸引我</span></label>
+          </div>
+          <p class="error-text">请选择 1–2 项。</p>
+        </fieldset>
+      </section>
+
+      <section class="survey-step" data-step="2" aria-labelledby="step2Title" hidden>
+        <h2 class="step-heading" id="step2Title">被联系，也被记住</h2>
+        <p class="step-intro">这里没有“越亲密越好”，只选你感觉舒服的边界。</p>
+
+        <fieldset class="question" data-required="true">
+          <legend class="question-title">7. 你能接受 AI 以怎样的方式主动联系你？ <span class="required-mark">*</span></legend>
+          <div class="options single-column">
+            <label class="option"><input type="radio" name="proactive_contact" value="only_in_app"><span>只在我打开 App 时出现</span></label>
+            <label class="option"><input type="radio" name="proactive_contact" value="event_followup"><span>只跟进我主动提过的重要事情</span></label>
+            <label class="option"><input type="radio" name="proactive_contact" value="once_daily"><span>每天固定一次</span></label>
+            <label class="option"><input type="radio" name="proactive_contact" value="user_defined"><span>由我设置可联系的时段和频率</span></label>
+            <label class="option"><input type="radio" name="proactive_contact" value="never"><span>不希望 AI 主动联系</span></label>
+          </div>
+          <p class="error-text">请选择一个答案。</p>
+        </fieldset>
+
+        <fieldset class="question" data-required="true" data-max="3">
+          <legend class="question-title">8. 哪些内容可以被 AI 长期记住？ <span class="required-mark">*</span></legend>
+          <p class="question-hint">最多选择 3 项</p>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="memory_content" value="nickname_preferences"><span>称呼和日常偏好</span></label>
+            <label class="option"><input type="checkbox" name="memory_content" value="ongoing_events"><span>正在经历的事情</span></label>
+            <label class="option"><input type="checkbox" name="memory_content" value="important_dates"><span>重要日期</span></label>
+            <label class="option"><input type="checkbox" name="memory_content" value="relationship_moments"><span>共同经历和约定</span></label>
+            <label class="option"><input type="checkbox" name="memory_content" value="emotional_disclosures"><span>我表达过的情绪和困扰</span></label>
+            <label class="option"><input type="checkbox" name="memory_content" value="nothing_default" data-exclusive="true"><span>默认什么都不要记</span></label>
+          </div>
+          <p class="error-text">请选择 1–3 项。</p>
+        </fieldset>
+
+        <fieldset class="question" data-required="true">
+          <legend class="question-title">9. 你希望怎样控制这些记忆？ <span class="required-mark">*</span></legend>
+          <div class="options single-column">
+            <label class="option"><input type="radio" name="memory_control" value="ai_suggest_user_confirm"><span>AI 提出候选记忆，由我确认后保存</span></label>
+            <label class="option"><input type="radio" name="memory_control" value="auto_save_deletable"><span>自动保存，但我可以随时查看和删除</span></label>
+            <label class="option"><input type="radio" name="memory_control" value="manual_only"><span>只有我手动标记时才保存</span></label>
+            <label class="option"><input type="radio" name="memory_control" value="no_long_term_memory"><span>不需要长期记忆</span></label>
+          </div>
+          <p class="error-text">请选择一个答案。</p>
+        </fieldset>
+      </section>
+
+      <section class="survey-step" data-step="3" aria-labelledby="step3Title" hidden>
+        <h2 class="step-heading" id="step3Title">最后，聊聊顾虑和期待</h2>
+        <p class="step-intro">还剩大约 2 分钟。</p>
+
+        <fieldset class="question" data-required="true" data-max="3">
+          <legend class="question-title">10. 使用这类产品时，你最担心什么？ <span class="required-mark">*</span></legend>
+          <p class="question-hint">最多选择 3 项</p>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="main_concerns" value="privacy"><span>隐私和对话数据安全</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="dependency"><span>产生过度情感依赖</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="wrong_memory"><span>记错、误解或反复提起</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="unnatural_voice"><span>声音不自然或容易出戏</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="boundary_crossing"><span>说教、冒犯或越过边界</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="price"><span>价格或订阅成本</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="stability"><span>回复延迟和服务稳定性</span></label>
+            <label class="option"><input type="checkbox" name="main_concerns" value="none" data-exclusive="true"><span>暂时没有明显顾虑</span></label>
+          </div>
+          <p class="error-text">请选择 1–3 项。</p>
+        </fieldset>
+
+        <div class="question">
+          <label class="question-title" for="oneThingWish">11. 如果这样的 AI 只能做好一件事，你最希望它做好什么？</label>
+          <p class="question-hint">选填，一两句话就够了</p>
+          <textarea id="oneThingWish" name="one_thing_wish" maxlength="300" placeholder="例如：在我很累的时候，只静静地陪我待一会儿，听我诉说。"></textarea>
+          <div class="character-count"><span id="wishCount">0</span> / 300</div>
+        </div>
+
+        <fieldset class="question" data-required="true">
+          <legend class="question-title">12. 你的年龄段是？ <span class="required-mark">*</span></legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="age_group" value="18_20"><span>18–20 岁</span></label>
+            <label class="option"><input type="radio" name="age_group" value="21_24"><span>21–24 岁</span></label>
+            <label class="option"><input type="radio" name="age_group" value="25_30"><span>25–30 岁</span></label>
+            <label class="option"><input type="radio" name="age_group" value="31_40"><span>31–40 岁</span></label>
+            <label class="option"><input type="radio" name="age_group" value="41_plus"><span>41 岁及以上</span></label>
+            <label class="option"><input type="radio" name="age_group" value="prefer_not"><span>不便回答</span></label>
+          </div>
+          <p class="error-text">请选择一个答案。</p>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend class="question-title">13. 你的性别认同是？</legend>
+          <p class="question-hint">选填，仅用于判断样本覆盖</p>
+          <div class="options">
+            <label class="option"><input type="radio" name="gender" value="woman"><span>女性</span></label>
+            <label class="option"><input type="radio" name="gender" value="man"><span>男性</span></label>
+            <label class="option"><input type="radio" name="gender" value="nonbinary_or_other"><span>非二元或其他</span></label>
+            <label class="option"><input type="radio" name="gender" value="prefer_not"><span>不便回答</span></label>
+          </div>
+        </fieldset>
+
+      </section>
+
+      <div class="form-actions">
+        <button class="button button-secondary" type="button" id="backButton">返回</button>
+        <button class="button button-primary" type="button" id="nextButton">继续</button>
+        <button class="button button-primary" type="submit" id="submitButton" hidden>提交问卷</button>
+      </div>
+      <p class="global-message" id="formMessage" role="alert" aria-live="polite"></p>
+    </form>
+
+    <section class="success" id="successScreen" aria-labelledby="successTitle" hidden>
+      <div class="success-mark" aria-hidden="true">✓</div>
+      <h2 id="successTitle">谢谢你认真回答</h2>
+      <p>你的回答已经记录。它会帮助我们决定 Vowice 应该先把哪些体验做好，也会提醒我们哪些边界不能替用户做决定。</p>
+      <p id="localSuccessNote" hidden>当前是本地演示模式，这份答案只保存在此浏览器中，并未上传。</p>
+
+      <div class="admin-panel" id="adminPanel" hidden>
+        <h3>本地演示数据</h3>
+        <p>这里只能导出当前浏览器保存的演示答案。</p>
+        <div class="admin-actions">
+          <button class="button" type="button" id="exportJsonButton">导出 JSON</button>
+          <button class="button" type="button" id="exportCsvButton">导出 CSV</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>仅用于 Vowice 产品研究</footer>
+
+  <script src="survey-config.js"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const config = window.VOWICE_SURVEY_CONFIG || { mode: "local" };
+      const isLocalMode = config.mode !== "supabase";
+      const storageKeys = {
+        draft: "vowice_survey_draft_v1",
+        localResponses: "vowice_survey_responses_v1",
+        pending: "vowice_survey_pending_v1"
+      };
+      const multiValueFields = new Set([
+        "companion_scenarios",
+        "voice_traits",
+        "preferred_experiences",
+        "memory_content",
+        "main_concerns"
+      ]);
+      const stepLabels = ["使用习惯", "声音与玩法", "主动与记忆", "顾虑与期待"];
+
+      const introScreen = document.getElementById("introScreen");
+      const surveyForm = document.getElementById("surveyForm");
+      const successScreen = document.getElementById("successScreen");
+      const steps = [...document.querySelectorAll(".survey-step")];
+      const startButton = document.getElementById("startButton");
+      const backButton = document.getElementById("backButton");
+      const nextButton = document.getElementById("nextButton");
+      const submitButton = document.getElementById("submitButton");
+      const introMessage = document.getElementById("introMessage");
+      const formMessage = document.getElementById("formMessage");
+      const modeBadge = document.getElementById("modeBadge");
+      const sessionStartedAt = Date.now();
+      let currentStep = 0;
+      let restoredStep = 0;
+
+      if (isLocalMode) {
+        modeBadge.hidden = false;
+      }
+
+      function safeParse(value, fallback) {
+        try {
+          return value ? JSON.parse(value) : fallback;
+        } catch (error) {
+          return fallback;
+        }
+      }
+
+      function announce(message) {
+        formMessage.textContent = message;
+      }
+
+      function collectAnswers() {
+        const result = {};
+        const formData = new FormData(surveyForm);
+        for (const [key, value] of formData.entries()) {
+          if (multiValueFields.has(key)) {
+            if (!result[key]) result[key] = [];
+            result[key].push(value);
+          } else {
+            result[key] = value;
+          }
+        }
+        for (const key of multiValueFields) {
+          if (!result[key]) result[key] = [];
+        }
+        return result;
+      }
+
+      function saveDraft() {
+        const draft = {
+          step: currentStep,
+          consentConfirmed: document.getElementById("consentConfirmed").checked,
+          answers: collectAnswers()
+        };
+        localStorage.setItem(storageKeys.draft, JSON.stringify(draft));
+      }
+
+      function restoreDraft() {
+        const draft = safeParse(localStorage.getItem(storageKeys.draft), null);
+        if (!draft || !draft.answers) return;
+
+        document.getElementById("consentConfirmed").checked = Boolean(draft.consentConfirmed);
+        restoredStep = Math.min(Math.max(Number(draft.step) || 0, 0), steps.length - 1);
+
+        for (const [name, storedValue] of Object.entries(draft.answers)) {
+          const values = Array.isArray(storedValue) ? storedValue : [storedValue];
+          const controls = surveyForm.querySelectorAll(`[name="${CSS.escape(name)}"]`);
+          controls.forEach((control) => {
+            if (control.type === "checkbox" || control.type === "radio") {
+              control.checked = values.includes(control.value);
+            } else {
+              control.value = storedValue || "";
+            }
+          });
+        }
+        updateCharacterCount();
+      }
+
+      function updateCharacterCount() {
+        const textarea = document.getElementById("oneThingWish");
+        document.getElementById("wishCount").textContent = String(textarea.value.length);
+      }
+
+      function updateStep() {
+        steps.forEach((step, index) => {
+          step.hidden = index !== currentStep;
+        });
+        document.getElementById("stepNumber").textContent = String(currentStep + 1);
+        document.getElementById("stepLabel").textContent = stepLabels[currentStep];
+        document.getElementById("progressBar").style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+        backButton.textContent = currentStep === 0 ? "返回首页" : "返回";
+        nextButton.hidden = currentStep === steps.length - 1;
+        submitButton.hidden = currentStep !== steps.length - 1;
+        announce("");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        const heading = steps[currentStep].querySelector("h2");
+        heading.setAttribute("tabindex", "-1");
+        heading.focus({ preventScroll: true });
+        saveDraft();
+      }
+
+      function validateStep(stepIndex) {
+        let firstInvalid = null;
+        const questions = steps[stepIndex].querySelectorAll(".question[data-required='true']");
+        questions.forEach((question) => {
+          const controls = [...question.querySelectorAll("input, textarea")];
+          const checked = controls.filter((control) =>
+            (control.type === "radio" || control.type === "checkbox") && control.checked
+          );
+          const textFilled = controls.some((control) =>
+            (control.type === "text" || control.tagName === "TEXTAREA") && control.value.trim()
+          );
+          const valid = checked.length > 0 || textFilled;
+          question.classList.toggle("is-invalid", !valid);
+          if (!valid && !firstInvalid) firstInvalid = question;
+        });
+
+        if (firstInvalid) {
+          announce("还有必答题没有完成，请检查标出的题目。");
+          firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+          const firstControl = firstInvalid.querySelector("input, textarea");
+          if (firstControl) firstControl.focus({ preventScroll: true });
+          return false;
+        }
+        return true;
+      }
+
+      function handleLimitedSelection(changedInput) {
+        if (changedInput.type !== "checkbox") return;
+        const question = changedInput.closest(".question");
+        if (!question) return;
+        const checkboxes = [...question.querySelectorAll('input[type="checkbox"]')];
+        const exclusive = question.querySelector('input[data-exclusive="true"]');
+
+        if (changedInput.checked && changedInput.dataset.exclusive === "true") {
+          checkboxes.forEach((checkbox) => {
+            if (checkbox !== changedInput) checkbox.checked = false;
+          });
+        } else if (changedInput.checked && exclusive) {
+          exclusive.checked = false;
+        }
+
+        const max = Number(question.dataset.max || 0);
+        const checked = checkboxes.filter((checkbox) => checkbox.checked);
+        if (max && checked.length > max) {
+          changedInput.checked = false;
+          announce(`这道题最多选择 ${max} 项。`);
+        } else {
+          announce("");
+          question.classList.remove("is-invalid");
+        }
+      }
+
+      function makeResponseId() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return window.crypto.randomUUID();
+        }
+        return `vowice-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      }
+
+      function buildPayload() {
+        const answers = collectAnswers();
+        return {
+          response_id: makeResponseId(),
+          survey_version: "1.0",
+          duration_seconds: Math.max(0, Math.round((Date.now() - sessionStartedAt) / 1000)),
+          consent: document.getElementById("consentConfirmed").checked,
+          age_confirmed: document.getElementById("consentConfirmed").checked,
+          age_group: answers.age_group || null,
+          gender: answers.gender || null,
+          answers
+        };
+      }
+
+      function saveLocalResponse(payload) {
+        const responses = safeParse(localStorage.getItem(storageKeys.localResponses), []);
+        responses.push({ ...payload, submitted_at: new Date().toISOString() });
+        localStorage.setItem(storageKeys.localResponses, JSON.stringify(responses));
+      }
+
+      async function sendToSupabase(payload) {
+        const url = String(config.supabaseUrl || "").replace(/\/$/, "");
+        const key = String(config.supabaseAnonKey || "");
+        const table = String(config.table || "vowice_survey_responses");
+        if (!url || !key) {
+          throw new Error("问卷尚未完成正式数据配置。");
+        }
+
+        const response = await fetch(`${url}/rest/v1/${encodeURIComponent(table)}`, {
+          method: "POST",
+          headers: {
+            apikey: key,
+            Authorization: `Bearer ${key}`,
+            "Content-Type": "application/json",
+            Prefer: "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error(`提交失败（${response.status}）`);
+        }
+      }
+
+      function showSuccess() {
+        introScreen.hidden = true;
+        surveyForm.hidden = true;
+        successScreen.hidden = false;
+        document.getElementById("localSuccessNote").hidden = !isLocalMode;
+        const adminRequested = new URLSearchParams(window.location.search).get("admin") === "1";
+        document.getElementById("adminPanel").hidden = !(isLocalMode && adminRequested);
+        localStorage.removeItem(storageKeys.draft);
+        successScreen.querySelector("h2").focus?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function downloadBlob(filename, content, type) {
+        const blob = new Blob([content], { type });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function exportJson() {
+        const responses = safeParse(localStorage.getItem(storageKeys.localResponses), []);
+        downloadBlob("vowice-survey-local.json", JSON.stringify(responses, null, 2), "application/json");
+      }
+
+      function csvEscape(value) {
+        const normalized = Array.isArray(value) ? value.join(" | ") : (value ?? "");
+        return `"${String(normalized).replace(/"/g, '""')}"`;
+      }
+
+      function exportCsv() {
+        const responses = safeParse(localStorage.getItem(storageKeys.localResponses), []);
+        const answerFields = [
+          "ai_companion_usage", "companion_scenarios", "preferred_interaction",
+          "voice_customization_interest", "voice_traits", "preferred_experiences",
+          "proactive_contact", "memory_content", "memory_control", "main_concerns",
+          "one_thing_wish", "age_group", "gender"
+        ];
+        const headers = ["response_id", "submitted_at", "duration_seconds", ...answerFields];
+        const rows = responses.map((response) => headers.map((header) => {
+          const value = header in response ? response[header] : response.answers?.[header];
+          return csvEscape(value);
+        }).join(","));
+        const csv = "\uFEFF" + [headers.join(","), ...rows].join("\n");
+        downloadBlob("vowice-survey-local.csv", csv, "text/csv;charset=utf-8");
+      }
+
+      startButton.addEventListener("click", () => {
+        const consentConfirmed = document.getElementById("consentConfirmed").checked;
+        if (!consentConfirmed) {
+          introMessage.textContent = "请先确认年龄与研究说明，再开始填写。";
+          return;
+        }
+        introMessage.textContent = "";
+        currentStep = restoredStep;
+        introScreen.hidden = true;
+        surveyForm.hidden = false;
+        updateStep();
+      });
+
+      backButton.addEventListener("click", () => {
+        if (currentStep === 0) {
+          saveDraft();
+          surveyForm.hidden = true;
+          introScreen.hidden = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        currentStep -= 1;
+        updateStep();
+      });
+
+      nextButton.addEventListener("click", () => {
+        if (!validateStep(currentStep)) return;
+        currentStep += 1;
+        updateStep();
+      });
+
+      surveyForm.addEventListener("change", (event) => {
+        handleLimitedSelection(event.target);
+        const question = event.target.closest(".question");
+        if (question) question.classList.remove("is-invalid");
+        saveDraft();
+      });
+
+      surveyForm.addEventListener("input", (event) => {
+        if (event.target.id === "oneThingWish") updateCharacterCount();
+        saveDraft();
+      });
+
+      surveyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!validateStep(currentStep)) return;
+
+        const payload = buildPayload();
+        submitButton.disabled = true;
+        submitButton.textContent = "正在提交…";
+        announce("");
+
+        try {
+          if (isLocalMode) {
+            saveLocalResponse(payload);
+          } else {
+            await sendToSupabase(payload);
+          }
+          localStorage.removeItem(storageKeys.pending);
+          showSuccess();
+        } catch (error) {
+          localStorage.setItem(storageKeys.pending, JSON.stringify(payload));
+          announce("暂时未能提交。答案已保存在当前浏览器，请稍后再次点击提交。");
+          submitButton.disabled = false;
+          submitButton.textContent = "再次提交";
+        }
+      });
+
+      document.getElementById("oneThingWish").addEventListener("input", updateCharacterCount);
+      document.getElementById("exportJsonButton").addEventListener("click", exportJson);
+      document.getElementById("exportCsvButton").addEventListener("click", exportCsv);
+      restoreDraft();
+    })();
+  </script>
+</body>
+</html>
