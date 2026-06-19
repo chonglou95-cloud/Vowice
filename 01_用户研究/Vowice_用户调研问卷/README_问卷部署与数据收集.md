@@ -1,8 +1,20 @@
 # Vowice 用户调研问卷使用说明
 
+## 当前状态（2026-06-19 更新）
+
+**问卷已正式上线，数据库正在收集数据。**
+
+| 项目 | 状态 |
+|---|---|
+| 部署平台 | Netlify（静态托管） |
+| 数据库 | Supabase（`vowice_survey_responses` 表） |
+| 收集模式 | supabase 正式模式 |
+| 已收数据 | 1 条（测试提交，2026-06-18） |
+| 数据库查看 | [Supabase Dashboard](https://supabase.com/dashboard/project/caeququkcknhzgbnichf/editor) |
+
 ## 这份问卷验证什么
 
-这不是市场规模调查，而是一轮面向产品决策的探索性问卷，预计完成时间为 5–8 分钟。它主要验证：
+这不是市场规模调查，而是一轮面向产品决策的探索性问卷，预计完成时间 5–8 分钟。主要验证：
 
 1. 用户在什么场景下需要语音陪伴。
 2. 声音定制、情境通话、共同记忆、主动语音中，哪些体验更值得优先开发。
@@ -13,67 +25,36 @@
 
 ## 文件说明
 
-- `Vowice_用户研究问卷.html`：可直接打开和部署的问卷。
-- `survey-config.js`：切换本地演示与正式数据收集。
-- `supabase-survey.sql`：创建数据库表和只写权限。
+- `Vowice_用户研究问卷.html`：当前正式问卷，Supabase 配置已内嵌，直接部署即可。
+- `survey-config.js`：已废弃，配置现已内嵌于 HTML。
+- `supabase-survey.sql`：建表脚本留档，已执行完毕。
 - `Vowice_问卷字段说明.md`：题目、字段和研究目的对照。
 - `Vowice_问卷视觉概念.png`：视觉方向留档。
 
-## 先在本地试填
+## 技术配置（已完成）
 
-1. 保持 `survey-config.js` 中的 `mode: "local"`。
-2. 直接打开 `Vowice_用户研究问卷.html`。
-3. 演示答案只保存在当前浏览器，不会上传。
-4. 在网址末尾加入 `?admin=1`，可在完成页导出该浏览器中的演示数据。
+Supabase 配置内嵌于 `Vowice_用户研究问卷.html`：
 
-本地数据只适合验收，不适合正式招募。清除浏览器数据后，本地答案也会被清除。
+- **项目 URL**：`https://caeququkcknhzgbnichf.supabase.co`
+- **数据表**：`vowice_survey_responses`
+- **权限**：匿名角色仅有 `INSERT` 权限，无读取、修改、删除权限（RLS 已启用）
 
-## 用 Supabase 正式收集
+## 更新问卷
 
-Supabase 会基于数据库表生成 REST API，网页可以直接提交数据。官方建议同时使用最小权限的 `GRANT` 和行级安全策略（RLS）限制访问：
+修改 `Vowice_用户研究问卷.html` 后，在终端运行：
 
-- [Supabase Data REST API](https://supabase.com/docs/guides/api)
-- [Supabase API 安全指南](https://supabase.com/docs/guides/api/securing-your-api)
-
-### 1. 建表并设置权限
-
-1. 创建 Supabase 项目。
-2. 打开 `SQL Editor`。
-3. 完整执行 `supabase-survey.sql`。
-4. 在 `Table Editor` 中确认 `vowice_survey_responses` 已创建且 RLS 开启。
-
-脚本只授予匿名网页 `INSERT` 权限，没有 `SELECT`、`UPDATE` 或 `DELETE` 权限。不要把 `service_role` 密钥放入网页。
-
-### 2. 配置网页
-
-编辑 `survey-config.js`：
-
-```js
-window.VOWICE_SURVEY_CONFIG = {
-  mode: "supabase",
-  supabaseUrl: "https://你的项目编号.supabase.co",
-  supabaseAnonKey: "你的 publishable 或 anon key",
-  table: "vowice_survey_responses"
-};
+```bash
+bash ~/Desktop/实习/03_Vowice\:声契\ _一段存在于声音里的记忆/push-to-github.sh
 ```
 
-公开网页中只能使用 Supabase 的 publishable/anon key。数据库安全依赖 RLS 和最小权限设置，不能依赖隐藏前端密钥。
-
-### 3. 部署静态网页
-
-把本文件夹中的 HTML、JS 一起部署到任一静态托管服务，例如 GitHub Pages、Netlify 或 Vercel。部署后请用手机和电脑各提交一次测试答案，再在 Supabase 后台确认：
-
-- 两条数据都已写入。
-- 数据中不包含姓名、手机号、邮箱或其他联系字段。
-- 公开网页无法读取表内数据。
-- 提交失败时，页面会保留待重试答案，不会要求用户重新填写。
+然后重新上传到 Netlify（拖拽 HTML 文件到 Netlify 部署页面）。
 
 ## 投放建议
 
 - 首轮收集 30–50 份用于发现方向，不把小样本百分比包装成市场结论。
 - 招募渠道至少覆盖：AI 陪伴用户、声音内容偏好者、感兴趣但未长期使用者。
 - 同一渠道不要占样本的 70% 以上，并记录渠道来源。
-- 作品集展示“假设—证据—决策”，不要只展示饼图和百分比。
+- 作品集展示"假设—证据—决策"，不要只展示饼图和百分比。
 
 ## 数据处理边界
 
